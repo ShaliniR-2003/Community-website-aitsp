@@ -10,7 +10,7 @@ export default function Register() {
   const navigate = useNavigate();
 
   const register = async () => {
-    await axios.post("https://community-website-aitsp.onrender.com/api/auth/register", {
+    await axios.post("http://localhost:5000/api/auth/register", {
       name,
       email,
       password

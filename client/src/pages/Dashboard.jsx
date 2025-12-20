@@ -10,13 +10,13 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("https://community-website-aitsp.onrender.com/api/posts")
+    axios.get("http://localhost:5000/api/posts")
       .then(res => setPosts(res.data.filter(post => post.status === "published")));
 
   }, []);
   const addComment = async (id) => {
   await axios.post(
-    `https://community-website-aitsp.onrender.com/posts/${id}/comment`,
+    `http://localhost:5000/posts/${id}/comment`,
     {
       text: comment,
       user: localStorage.getItem("name")

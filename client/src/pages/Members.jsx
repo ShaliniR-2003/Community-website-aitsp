@@ -8,7 +8,7 @@ export default function Members() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    axios.get("https://community-website-aitsp.onrender.com/api/users")
+    axios.get("http://localhost:5000/api/users")
       .then(res => setMembers(res.data));
   }, []);
 

@@ -9,7 +9,7 @@ export default function PostDetails() {
   const [comment, setComment] = useState("");
 
   useEffect(() => {
-    axios.get("https://community-website-aitsp.onrender.com/api/posts")
+    axios.get("http://localhost:5000/api/posts")
       .then(res => {
         const p = res.data.find(x => x._id === id);
         setPost(p);
@@ -17,7 +17,7 @@ export default function PostDetails() {
   }, []);
 
   const addComment = async () => {
-    await axios.post(`https://community-website-aitsp.onrender.com/api/posts/comment/${id}`, {
+    await axios.post(`http://localhost:5000/api/posts/comment/${id}`, {
       text: comment,
       user: "Member"
     });

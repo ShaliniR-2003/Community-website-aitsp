@@ -10,7 +10,7 @@ export default function Profile() {
 
   const updateProfile = async () => {
     const userId = localStorage.getItem("userId"); // store during login later
-    await axios.put(`https://community-website-aitsp.onrender.com/api/users/${userId}`, {
+    await axios.put(`http://localhost:5000/api/users/${userId}`, {
       bio,
       photo,
       visibility

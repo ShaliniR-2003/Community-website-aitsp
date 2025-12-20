@@ -8,33 +8,33 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState({});
 
   useEffect(() => {
-    axios.get("https://community-website-aitsp.onrender.com/admin/users")
+    axios.get("http://localhost:5000/admin/users")
       .then(res => setUsers(res.data));
 
-    axios.get("https://community-website-aitsp.onrender.com/admin/posts")
+    axios.get("http://localhost:5000/admin/posts")
       .then(res => setPosts(res.data));
 
-    axios.get("https://community-website-aitsp.onrender.com/admin/stats")
+    axios.get("http://localhost:5000/admin/stats")
       .then(res => setStats(res.data));
   }, []);
 
   const suspendUser = (id) => {
-    axios.put(`https://community-website-aitsp.onrender.com/admin/suspend/${id}`)
+    axios.put(`http://localhost:5000/admin/suspend/${id}`)
       .then(() => window.location.reload());
   };
 
   const deleteUser = (id) => {
-    axios.delete(`https://community-website-aitsp.onrender.com/admin/user/${id}`)
+    axios.delete(`http://localhost:5000/admin/user/${id}`)
       .then(() => window.location.reload());
   };
 
   const approvePost = (id) => {
-    axios.put(`https://community-website-aitsp.onrender.com/admin/approve/${id}`)
+    axios.put(`http://localhost:5000/admin/approve/${id}`)
       .then(() => window.location.reload());
   };
 
   const deletePost = (id) => {
-    axios.delete(`https://community-website-aitsp.onrender.com/admin/post/${id}`)
+    axios.delete(`http://localhost:5000/admin/post/${id}`)
       .then(() => window.location.reload());
   };
 
