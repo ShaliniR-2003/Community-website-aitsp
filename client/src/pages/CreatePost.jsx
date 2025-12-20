@@ -6,7 +6,7 @@ export default function CreatePost() {
   const [content, setContent] = useState("");
 
   const savePost = async (status) => {
-    await axios.post("http://localhost:5000/api/posts", {
+    await axios.post("https://community-website-aitsp.onrender.com/api/posts", {
       title,
       content,
       status,
