@@ -1,27 +1,46 @@
-import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function CreatePost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const navigate = useNavigate();
 
-  const submit = async () => {
+  const savePost = async (status) => {
     await axios.post("http://localhost:5000/api/posts", {
       title,
       content,
-      author: "Member"
+      status,
+      author: localStorage.getItem("name")
     });
-    navigate("/dashboard");
+
+    alert(status === "draft" ? "Saved as Draft" : "Published");
   };
 
   return (
-    <div>
-      <h2>Create Post</h2>
-      <input placeholder="Title" onChange={e => setTitle(e.target.value)} />
-      <textarea placeholder="Content" onChange={e => setContent(e.target.value)} />
-      <button onClick={submit}>Publish</button>
+    <div style={{ padding: 20, border: "1px solid #ccc", borderRadius: 10 }}>
+      <h2>Create Blog</h2>
+
+      <input
+        placeholder="Title"
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
+      <br /><br />
+
+      <textarea
+        placeholder="Content"
+        onChange={(e) => setContent(e.target.value)}
+      />
+
+      <br /><br />
+
+      <button onClick={() => savePost("draft")}>
+        Save as Draft
+      </button>
+
+      <button onClick={() => savePost("published")}>
+        Publish
+      </button>
     </div>
   );
 }

@@ -5,7 +5,10 @@ const UserSchema = new mongoose.Schema({
   email: String,
   password: String,
   bio: String,
-  role: { type: String, default: "user" }
+  photo: String,
+  visibility: { type: String, default: "public" }, // public/private
+  role: { type: String, default: "user" },
+  suspended: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model("User", UserSchema);
