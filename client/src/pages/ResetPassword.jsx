@@ -7,7 +7,7 @@ export default function ResetPassword() {
   const [newPassword, setNewPassword] = useState("");
 
   const reset = async () => {
-    await axios.post("${process.env.REACT_APP_API_URL}/api/auth/reset-password", {
+    await axios.post("https://community-website-aitsp-1.onrender.com/api/auth/reset-password", {
       email,
       newPassword
     });
