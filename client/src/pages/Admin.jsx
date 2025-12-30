@@ -8,21 +8,21 @@ export default function Admin() {
 
   useEffect(() => {
     // Get users
-    axios.get("http://localhost:5000/admin/users")
+    axios.get("https://community-website-aitsp-1.onrender.com/admin/users")
       .then(res => setUsers(res.data));
     // Get posts
-    axios.get("http://localhost:5000/admin/posts")
+    axios.get("https://community-website-aitsp-1.onrender.com/admin/posts")
       .then(res => setPosts(res.data))
       .catch(err => console.log(err));
     // Get stats
-    axios.get("http://localhost:5000/admin/stats")
+    axios.get("https://community-website-aitsp-1.onrender.com/admin/stats")
       .then(res => setStats(res.data));
   }, []);
 
   const approvePost = async (id) => {
   try {
-    await axios.put(`http://localhost:5000/admin/approve/${id}`);
-    const res = await axios.get("http://localhost:5000/admin/posts");
+    await axios.put(`https://community-website-aitsp-1.onrender.com/admin/approve/${id}`);
+    const res = await axios.get("https://community-website-aitsp-1.onrender.com/admin/posts");
     setPosts(res.data);
     alert("Post approved!");
   } catch (err) {
@@ -33,8 +33,8 @@ export default function Admin() {
 
 const deletePost = async (id) => {
   try {
-    await axios.delete(`http://localhost:5000/admin/post/${id}`);
-    const res = await axios.get("http://localhost:5000/admin/posts");
+    await axios.delete(`https://community-website-aitsp-1.onrender.com/admin/post/${id}`);
+    const res = await axios.get("https://community-website-aitsp-1.onrender.com/admin/posts");
     setPosts(res.data);
     alert("Post deleted!");
   } catch (err) {
@@ -45,8 +45,8 @@ const deletePost = async (id) => {
 
 const suspendUser = async (id) => {
   try {
-    await axios.put(`http://localhost:5000/admin/suspend/${id}`);
-    const res = await axios.get("http://localhost:5000/admin/users");
+    await axios.put(`https://community-website-aitsp-1.onrender.com/admin/suspend/${id}`);
+    const res = await axios.get("https://community-website-aitsp-1.onrender.com/admin/users");
     setUsers(res.data);
     alert("User suspended!");
   } catch (err) {
@@ -57,8 +57,8 @@ const suspendUser = async (id) => {
 
 const deleteUser = async (id) => {
   try {
-    await axios.delete(`http://localhost:5000/admin/user/${id}`);
-    const res = await axios.get("http://localhost:5000/admin/users");
+    await axios.delete(`https://community-website-aitsp-1.onrender.com/admin/user/${id}`);
+    const res = await axios.get("https://community-website-aitsp-1.onrender.com/admin/users");
     setUsers(res.data);
     alert("User deleted!");
   } catch (err) {

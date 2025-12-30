@@ -90,15 +90,18 @@ router.post("/reset-password", async (req, res) => {
   try {
     const { email, newPassword } = req.body;
 
+    if (!email || !newPassword) {
+      return res.status(400).json("Email and new password are required");
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json("User not found");
+    }
+
     const hashedPassword = await bcrypt.hash(newPassword, 10);
-
-    const updatedUser = await User.findOneAndUpdate(
-      { email },
-      { password: hashedPassword },
-      { new: true }
-    );
-
-    if (!updatedUser) return res.status(404).json("User not found");
+    user.password = hashedPassword;
+    await user.save();
 
     res.json("Password reset successful");
   } catch (err) {

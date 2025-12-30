@@ -9,7 +9,7 @@ export default function Community() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/posts");
+        const res = await axios.get("https://community-website-aitsp-1.onrender.com/api/posts");
         const publishedPosts = res.data.filter(post => post.status === "published");
         setPosts(publishedPosts);
       } catch (err) {
@@ -29,7 +29,7 @@ export default function Community() {
 
     try {
       // POST comment to backend
-      const res = await axios.post(`http://localhost:5000/api/posts/${postId}/comment`, {
+      const res = await axios.post(`https://community-website-aitsp-1.onrender.com/api/posts/${postId}/comment`, {
         text: comments[postId],
         user: localStorage.getItem("name") || "Anonymous",
       });
