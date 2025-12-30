@@ -91,7 +91,7 @@ router.post("/reset-password", async (req, res) => {
     const { email, newPassword } = req.body;
 
     if (!email || !newPassword) {
-      return res.status(400).json("Email and new password are required");
+      return res.status(400).json("Email and new password required");
     }
 
     const user = await User.findOne({ email });
